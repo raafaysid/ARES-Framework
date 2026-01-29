@@ -1,4 +1,5 @@
 ARES Framework: Drone Telemetry & Self-Healing Pipeline
+![Ares Safety CI](https://github.com/raafaysid/ARES-Framework/actions/workflows/python-tests.yml/badge.svg)
 I built this framework to simulate how autonomous systems (like drones or rovers) handle sensor failures in the field. It’s a full-stack automation project that connects a Python backend, a Bash recovery engine, and a SwiftUI observability dashboard.
 
 Core Components
