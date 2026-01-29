@@ -1,0 +1,8 @@
+{
+    "timestamp": "2026-01-29T04:55:22.626978",
+    "id": "DRONE_001",
+    "battery_pct": 32,
+    "altitude_ft": 641,
+    "status": "CRITICAL_ERROR",
+    "monitor_threshold": 64.1
+}
