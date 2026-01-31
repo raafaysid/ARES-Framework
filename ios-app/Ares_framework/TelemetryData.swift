@@ -52,3 +52,16 @@ class TelemetryViewModel: ObservableObject {
         }.resume()
     }
 }
+func validateFlightSafety(status: String?, altitude: Int?) -> Bool {
+    //check if altitude is missing or impossible (negative)
+    guard let alt = altitude, alt >= 0 else {
+        return false
+    }
+    
+    //if status is "CRITICAL", it's not safe
+    if status == "CRITICAL" {
+        return false
+    }
+    
+    return true
+}
