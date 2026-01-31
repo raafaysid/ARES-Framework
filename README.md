@@ -22,3 +22,25 @@ How to Run It
 Start Backend: Run python3 backend/telemetry_gen.py and python3 backend/monitor.py in separate terminals.
 
 Launch Dashboard: Open ios-app/Ares_framework.xcodeproj in Xcode and run it on an iPhone 16 Pro simulator.
+
+How I Ensure the System is Safe (QA & Automation)
+Since ARES handles flight data, a single error could be critical. I built an automated "Safety Net" to catch bugs before they ever reach the user.
+
+1- Automated Testing
+The Backend: I use Python (Pytest) to make sure the drone data being sent is accurate and formatted correctly.
+
+The Display (iOS): I use Swift Testing to ensure the iPhone app understands that data and doesn't crash if a sensor sends a "impossible" number (like a negative altitude).
+
+2- (CI/CD)
+I set up GitHub Actions to act as a 24/7 quality guard. Every time I update the code:
+
+A Linux server automatically starts up to check the Python code.
+
+A Mac server automatically starts up to run the iOS tests in a virtual iPhone.
+
+If any test fails, the system blocks the update so the app stays stable.
+
+3- Realistic Simulations
+Error Handling: I wrote tests that purposely send "bad" data to the app to prove that it shows a clear warning message instead of just freezing.
+
+Docker Reliability: I test the connection between the app and the server to make sure they can reconnect automatically if the signal is lost.
