@@ -25,8 +25,11 @@ jobs:
             -project Ares_framework.xcodeproj \
             -scheme Ares_framework \
             -destination "platform=iOS Simulator,name=iPhone 16 Pro" \
-            -test-timeouts 300 \
-            -parallel-testing-enabled NO \
+            -resultBundlePath TestResults.xcresult \
+            -test-timeouts-enabled YES \
+            -default-test-execution-time-allowance 300 \
+            -parallel-testing-enabled NO
+            
       - name: Upload Test Results
         #runs even if tests fail
         if: always()
