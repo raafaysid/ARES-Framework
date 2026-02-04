@@ -15,8 +15,10 @@ jobs:
           xcode-version: "latest-stable"
 
       - name: Run swift tests
+        working-directory: ./Ares_framework
         run: |
           xcodebuild test \
             -project Ares_framework.xcodeproj \
             -scheme Ares_framework \
             -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest'
+            -resultBundlePath TestResults.xcresult
