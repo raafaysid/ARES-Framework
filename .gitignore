@@ -13,3 +13,11 @@ xcuserdata/
 # Log files (optional - if you want your repo to start empty)
 backend/logs/flight_data.json
 backend/logs/archive/*.json
+
+# ARES data Logs
+Backend/logs/engineering_review/*.json
+incidents/*.json
+
+# environment/Secrets
+.env
+.aws/

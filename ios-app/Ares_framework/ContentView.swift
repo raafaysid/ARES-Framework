@@ -31,6 +31,7 @@ struct ContentView: View {
                         TelemetryRow(label: "ALTITUDE", value: "\(data.altitude_ft ?? 0) FT")
                         TelemetryRow(label: "BATTERY", value: "\(data.battery_pct ?? 0)%", batteryValue: data.battery_pct)
                         TelemetryRow(label: "STATUS", value: data.status ?? "UNKNOWN")
+                            .accessibilityIdentifier("StatusRow")
                     }
                 } else {
                     // show a loading state if the API isnt reached yet

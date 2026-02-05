@@ -4,7 +4,8 @@ import random
 import os
 from fastapi import FastAPI, HTTPException
 from datetime import datetime
-
+import uvicorn
+import threading
 app = FastAPI()
 # configuration
 LOG_DIR = "logs"
@@ -59,7 +60,7 @@ def main():
             # monitor logic with error handling
             if data["status"] == "CRITICAL_ERROR":
                 print(
-                    f"⚠️  MONITOR ALERT: Alt {data['altitude_ft']} vs Bat {data['battery_pct']}")
+                    f"MONITOR ALERT: Alt {data['altitude_ft']} vs Bat {data['battery_pct']}")
 
                 # instant write: tell the iPhone appCRITICAL state
                 with open(LOG_FILE, "w") as f:
@@ -123,8 +124,6 @@ def get_telemetry():
 
 
 if __name__ == "__main__":
-    import uvicorn
-    import threading
 
     # start the data generator in a background thread
     #  keeping the telemetry loop running while the API listens

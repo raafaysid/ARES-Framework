@@ -23,12 +23,18 @@ final class Ares_frameworkUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testConnectionStatusIsVisible() throws {
+        // launch the app
         let app = XCUIApplication()
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // look for the text "Status"
+        let statusRow = app.otherElements["StatusRow"]
+        
+        // assert that the label actually exists on the screen
+        XCTAssertTrue(statusRow.waitForExistence(timeout: 10), "The Status row should be visible on launch.")
+        // use a timeout to give the app a second to load
+
     }
 
     @MainActor
